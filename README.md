@@ -39,4 +39,6 @@ kubectl apply -f openstack-cloud-controller-manager-ds.yaml
 ```
 
 ### On Worker Node
+```
 kubeadm join --config worker.yaml
+```
