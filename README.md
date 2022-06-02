@@ -179,6 +179,8 @@ kubectl --context="${CTX_CLUSTER2}" apply -n istio-system -f \
 
 ```
 
+#### Endpoint Discovery on cluster1
+
 Enable Endpoint Discovery
 Install a remote secret in cluster2 that provides access to cluster1’s API server
 ```
