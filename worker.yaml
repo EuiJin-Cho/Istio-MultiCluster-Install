@@ -1,0 +1,11 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+discovery:
+  bootstrapToken:
+    apiServerEndpoint: 192.168.0.14:6443 #change your master ip
+    token: bqdy6a.p6ffdsdfdsnwqcffdsfdsfyy #change your token
+    caCertHashes: ["sha256:9800440ed2f6e553fdsfdsf0dsfd586f3ae773aba6412454c7d842fe570"] #change your hesh
+kind: JoinConfiguration
+nodeRegistration:
+  kubeletExtraArgs:
+    cloud-provider: "external"
+
