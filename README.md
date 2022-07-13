@@ -264,14 +264,14 @@ Install a remote secret in cluster1,2 that provides access to cluster3’s API s
 ```
 istioctl x create-remote-secret \
   --context="${CTX_CLUSTER3}" \
-  --name=cluster2 | \
+  --name=cluster3 | \
   kubectl apply -f - --context="${CTX_CLUSTER1}"
 
 ```
 ```
 istioctl x create-remote-secret \
   --context="${CTX_CLUSTER3}" \
-  --name=cluster2 | \
+  --name=cluster3 | \
   kubectl apply -f - --context="${CTX_CLUSTER2}"
 
 ```
