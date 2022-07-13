@@ -229,7 +229,7 @@ kubectl --context="${CTX_CLUSTER3}" apply -n istio-system -f \
 #### Endpoint Discovery on cluster1
 
 Enable Endpoint Discovery
-Install a remote secret in cluster2 that provides access to cluster1’s API server
+Install a remote secret in cluster2,3 that provides access to cluster1’s API server
 ```
 istioctl x create-remote-secret \
   --context="${CTX_CLUSTER1}" \
@@ -237,7 +237,14 @@ istioctl x create-remote-secret \
   kubectl apply -f - --context="${CTX_CLUSTER2}"
 
 ```
-Install a remote secret in cluster1 that provides access to cluster2’s API server
+```
+istioctl x create-remote-secret \
+  --context="${CTX_CLUSTER1}" \
+  --name=cluster1 | \
+  kubectl apply -f - --context="${CTX_CLUSTER3}"
+
+```
+Install a remote secret in cluster1,3 that provides access to cluster2’s API server
 ```
 istioctl x create-remote-secret \
   --context="${CTX_CLUSTER2}" \
@@ -245,7 +252,27 @@ istioctl x create-remote-secret \
   kubectl apply -f - --context="${CTX_CLUSTER1}"
 
 ```
+```
+istioctl x create-remote-secret \
+  --context="${CTX_CLUSTER2}" \
+  --name=cluster2 | \
+  kubectl apply -f - --context="${CTX_CLUSTER3}"
 
+```
 
+Install a remote secret in cluster1,2 that provides access to cluster3’s API server
+```
+istioctl x create-remote-secret \
+  --context="${CTX_CLUSTER3}" \
+  --name=cluster2 | \
+  kubectl apply -f - --context="${CTX_CLUSTER1}"
 
+```
+```
+istioctl x create-remote-secret \
+  --context="${CTX_CLUSTER3}" \
+  --name=cluster2 | \
+  kubectl apply -f - --context="${CTX_CLUSTER2}"
+
+```
 
