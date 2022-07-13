@@ -72,6 +72,10 @@ export CTX_CLUSTER3=cluster3
 
 ```
 
+```
+cd ~
+```
+
 Download istio
 ```
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.6 sh -
@@ -81,9 +85,6 @@ kubectl label namespace default istio-injection=enabled
 
 ```
 
-```
-cd ~
-```
 
 Make cacerts
 ```
