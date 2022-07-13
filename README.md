@@ -81,6 +81,10 @@ kubectl label namespace default istio-injection=enabled
 
 ```
 
+```
+cd ~
+```
+
 Make cacerts
 ```
 export ISTIO_VER=1.12.6
