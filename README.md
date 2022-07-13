@@ -186,6 +186,46 @@ kubectl --context="${CTX_CLUSTER2}" apply -n istio-system -f \
 
 ```
 
+
+#### Set cluster3
+
+Create the Istio configuration for cluster3
+```
+cat <<EOF > cluster3.yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  values:
+    global:
+      meshID: mesh1
+      multiCluster:
+        clusterName: cluster3
+      network: network3
+EOF
+
+```
+
+Apply the configuration to cluster3
+```
+istioctl install --context="${CTX_CLUSTER3}" -f cluster3.yaml
+
+```
+
+Install the east-west gateway in cluster3
+```
+samples/multicluster/gen-eastwest-gateway.sh \
+    --mesh mesh1 --cluster cluster3 --network network3 | \
+    istioctl --context="${CTX_CLUSTER3}" install -y -f -
+
+```
+
+Expose services in cluster3
+```
+kubectl --context="${CTX_CLUSTER3}" apply -n istio-system -f \
+    samples/multicluster/expose-services.yaml
+
+```
+
 #### Endpoint Discovery on cluster1
 
 Enable Endpoint Discovery
