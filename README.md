@@ -68,6 +68,7 @@ Set the environment Variables
 ```
 export CTX_CLUSTER1=cluster1
 export CTX_CLUSTER2=cluster2
+export CTX_CLUSTER3=cluster3
 
 ```
 
