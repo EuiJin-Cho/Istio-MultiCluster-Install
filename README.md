@@ -105,6 +105,7 @@ Set the cluster’s network
 ```
 kubectl --context="${CTX_CLUSTER1}" label namespace istio-system topology.istio.io/network=network1
 kubectl --context="${CTX_CLUSTER2}" label namespace istio-system topology.istio.io/network=network2
+kubectl --context="${CTX_CLUSTER3}" label namespace istio-system topology.istio.io/network=network3
 
 ```
 
